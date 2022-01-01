@@ -27,11 +27,11 @@ STEAM_DATA_DIR="/home/ubuntu/data/"
 #Update and validate the server:
 docker run \
         --rm \
-        -v /home/ubuntu/data:/data \
+        -v "${STEAM_DATA_DIR}":/data \
         steamcmd/steamcmd:latest +login "${ADMIN_USERNAME}" "${ADMIN_USER_PASSWORD}" +force_install_dir /data/brutal_grounds_ds +app_update "${BRUTAL_GROUNDS_APP_ID}" validate +quit
 
 docker run \
-        -v /home/ubuntu/data/brutal_grounds_ds:/data \
+        -v "${STEAM_DATA_DIR}"brutal_grounds_ds:/data \
         --rm \
         ubuntu chown -R "${CURRENT_USER_ID}:${CURRENT_USER_GROUP_ID}" /data
 
